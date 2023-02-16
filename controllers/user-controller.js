@@ -19,7 +19,7 @@ const userController = {
         .populate('thoughts')
         .then((singleUserData) => {
             if (!singleUserData) {
-                return status(404).json({ message: 'No user found!'})
+                return res.status(404).json({ message: 'No user found!'})
             }
             res.json(singleUserData)
         })
@@ -39,11 +39,41 @@ const userController = {
     },
 
     updateUser(req, res) {
-
+        User.findOneAndUpdate({
+            _id: req.params.userId
+        },
+        {
+            $set: req.body
+        },
+        {
+            runValidators: true,
+            new: true,
+        })
+        .then((updateData) => {
+            if (!updateData) {
+                return res.status(404).json({ message: 'No user found!'})
+            }
+            res.json(updateData)
+        })
+        .catch((err) => {
+            res.status(500).json(err)
+        })
     },
 
     deleteUser(req, res) {
-
+        User.findOneAndDelete({_id: req.params.userId})
+        .then((deletedUser) => {
+            if (!deletedUser) {
+                return res.status(404).json({ message: 'No user found!'})
+            }
+            return Thought.deleteMany({_id: {$in: deletedUser.thoughts}})
+        })
+        .then(() => {
+            res.json({ message: 'User and thoughts successfully deleted!'})
+        })
+        .catch((err) => {
+            res.status(500).json(err)
+        })
     },
 
     addFriend(req, res) {
