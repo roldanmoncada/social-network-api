@@ -86,11 +86,51 @@ const thoughtController = {
     },
 
     addReaction(req, res) {
-
+        Thought.findOneAndUpdate(
+            {
+                _id: req.params.thoughId
+            },
+            {
+                $addToSet: {reactions: req.body}
+            },
+            {
+                runValidators: true,
+                new: true,
+            }
+        )
+        .then((reactionData) => {
+            if (!reactionData) {
+                return res.status(404).json({message: 'Could not add reaction!'})
+            }
+            res.json(reactionData)
+        })
+        .catch((err) => {
+            res.status(500).json(err)
+        })
     },
 
     removeReaction(req, res) {
-        
+        Thought.findOneAndUpdate(
+            {
+                _id: req.params.thoughId
+            },
+            {
+                $pull: {reactions: req.body}
+            },
+            {
+                runValidators: true,
+                new: true,
+            }
+        )
+        .then((reactionData) => {
+            if (!reactionData) {
+                return res.status(404).json({message: 'Could not add reaction!'})
+            }
+            res.json(reactionData)
+        })
+        .catch((err) => {
+            res.status(500).json(err)
+        })
     }
 }
 
