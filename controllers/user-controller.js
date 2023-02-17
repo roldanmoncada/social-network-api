@@ -77,11 +77,39 @@ const userController = {
     },
 
     addFriend(req, res) {
-
+        User.findOneAndUpdate({
+            _id: req.params.userId
+        },
+        {
+            $addToSet: {friends: req.params.friendId}
+        })
+        .then((addFriendData) => {
+            if (!addFriendData) {
+                return res.status(404).json({ message: 'Could not add user!'})
+            }
+            res.json(addFriendData)
+        })
+        .catch((err) => {
+            res.status(500).json(err)
+        })
     },
 
     removeFriend(req, res) {
-        
+        User.findOneAndUpdate({
+            _id: req.params.userId
+        },
+        {
+            $pull: {friends: req.params.friendId}
+        })
+        .then((addFriendData) => {
+            if (!addFriendData) {
+                return res.status(404).json({ message: 'Could not add user!'})
+            }
+            res.json(addFriendData)
+        })
+        .catch((err) => {
+            res.status(500).json(err)
+        })
     }
 }
 
