@@ -55,9 +55,9 @@ const thoughtController = {
         Thought.findOneAndUpdate({ _id: req.params.thoughtId}, {$set: req.body}, {runValidators: true, new: true})
         .then((updatedThoughtData) => {
             if (!updatedThoughtData) {
-                return res.status(404).json({ message: 'Could not update thought'})
+                return res.status(404)
             }
-            res.json(updatedThoughtData, { message: 'Thought updated successfully'})
+            res.status(200).json(updatedThoughtData)
         })
         .catch((err) => {
             res.status(500).json(err)
