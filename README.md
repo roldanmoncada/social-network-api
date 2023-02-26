@@ -38,4 +38,4 @@ This application will not be deployed and requires a video guide so I will not b
 
 Here is a link to my GitHub [repo!](https://github.com/roldanmoncada/social-network-api)
 
-Here is the walkthrough [video!](https://drive.google.com/file/d/1a0JT71eMe14FvAtkUhZLF9N--RQWOl0L/view)
+Here is the walkthrough [video!](https://drive.google.com/file/d/1QgaVHV01L3fxb19GTPUpMrUQb1VE08la/view)
