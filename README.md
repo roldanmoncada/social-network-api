@@ -2,7 +2,7 @@
 
 ## Description:
 
-This application is a content management system (CMS) that allows a hypothetical business owner to manage their company's employee database using Node.js, Inquirer, and MySQL.
+This application is a backend API for a web-based social network where users can share thoughts, react to friends' thoughts, and even create a friends list. This was done by using Express.js, Node.js, and MongoDB in tandem with Mongoose.
 
 The functionality of this application will be displayed via video clip as requested by the assignment's Grading Requirements.
 
@@ -38,4 +38,4 @@ This application will not be deployed and requires a video guide so I will not b
 
 Here is a link to my GitHub [repo!](https://github.com/roldanmoncada/social-network-api)
 
-Here is the walkthrough [video!]([PLACEHOLDER TEXT FOR WHEN I RECORD](https://drive.google.com/file/d/1a0JT71eMe14FvAtkUhZLF9N--RQWOl0L/view))
+Here is the walkthrough [video!](https://drive.google.com/file/d/1a0JT71eMe14FvAtkUhZLF9N--RQWOl0L/view)
